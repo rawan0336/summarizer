@@ -2,9 +2,6 @@
 import os #توفر ادوات للتعامل مع الملفات
 import openai
 
-
-
-
 from PyPDF2 import  PdfReader
 from dotenv  import load_dotenv
 import streamlit as st
