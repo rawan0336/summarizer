@@ -1,14 +1,14 @@
 
 import os #توفر ادوات للتعامل مع الملفات
 import openai
-#from openai import OpenAI
 
-#client = OpenAI()
-#from openai import OpenAI
+
+
+
 from PyPDF2 import  PdfReader
 from dotenv  import load_dotenv
 import streamlit as st
-#client = OpenAI()
+
 
 load_dotenv()
 
@@ -17,7 +17,7 @@ if not api_key:
     raise Exception("API key is missing. Set the OPENAI_API_KEY environment variable.")
 openai.api_key = api_key
 
-#client = OpenAI()
+
 def get_response(text):
     prompt = f"""
             You are an expert in summaerizing text, you will be given a text delimited by four backquotes,
