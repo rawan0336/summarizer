@@ -1,6 +1,9 @@
 
 import os #توفر ادوات للتعامل مع الملفات
 import openai
+from openai import OpenAI
+
+client = OpenAI()
 
 from PyPDF2 import  PdfReader
 from dotenv  import load_dotenv
@@ -13,7 +16,7 @@ load_dotenv()
 api_key = os.getenv("OPENAI_API_KEY")
 if not api_key:
     raise Exception("API key is missing. Set the OPENAI_API_KEY environment variable.")
-openai.api_key = api_key
+raise Exception("The 'openai.api_key' option isn't read in the client API. You will need to pass it when you instantiate the client, e.g. 'OpenAI(api_key=api_key)'")
 
 
 def get_response(text):
@@ -24,7 +27,7 @@ def get_response(text):
                    
             text: ''''{text}''''
             """
-    response = openai.Completion.create(model="text-davinci-002", prompt=prompt,
+    response = client.completions.create(model="text-davinci-002", prompt=prompt,
     max_tokens=100)
     print("Full Response:", response)
     return response["choices"][0]["text"]
